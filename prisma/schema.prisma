@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model IdCard {
+  id        String   @id @default(cuid())
+  fullName  String
+  idNumber  String   @unique
+  dateOfBirth String
+  issueDate String
+  expiryDate String
+  frontImage String?
+  backImage  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DrivingLicense {
+  id               String   @id @default(cuid())
+  licenseNumber    String   @unique
+  category         String   // e.g., "Motorcycle", "Car"
+  issueDate        String
+  expiryDate       String
+  licensingAuthority String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model BikeDetails {
+  id                String   @id @default(cuid())
+  bikeModel         String
+  registrationNumber String @unique
+  engineNumber      String
+  chassisNumber     String
+  tokenTaxPaidUpTo  String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

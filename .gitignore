@@ -1,0 +1,17 @@
+node_modules
+.next
+dist
+build
+*.log
+.env
+.env.local
+.DS_Store
+.idea
+*.swp
+*.swo
+*~
+.vscode/settings.json
+coverage
+__pycache__
+*.db
+prisma/dev.db
